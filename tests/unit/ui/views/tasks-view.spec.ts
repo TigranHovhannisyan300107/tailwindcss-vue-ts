@@ -8,15 +8,15 @@ describe('TasksView', () => {
     wrapper = shallowMount(TasksView, {
       global: {
         stubs: {
-          'todo-control': true,
+          'todo-input': true,
           'todo-list': true,
         },
       },
     });
   });
 
-  it('should render TodoControl component', () => {
-    expect(wrapper.findComponent('todo-control-stub').exists()).toBe(true);
+  it('should render TodoInput component', () => {
+    expect(wrapper.findComponent('todo-input-stub').exists()).toBe(true);
   });
 
   it('should render TodoList component', () => {

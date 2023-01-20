@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'todos',
     component: () =>
-      import(/* webpackChunkName: "todos" */ '../views/TodoPage.vue'),
+      import(/* webpackChunkName: "todos-page" */ '../views/TodoPage.vue'),
   },
   {
     path: '/profile',
     name: 'profile',
     component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/ProfilePage.vue'),
+      import(/* webpackChunkName: "profile-page" */ '../views/ProfilePage.vue'),
   },
 ];
 

@@ -8,18 +8,18 @@ describe('App', () => {
     wrapper = shallowMount(App, {
       global: {
         stubs: {
-          'header-view': true,
           'router-view': true,
+          'header-view': true,
         },
       },
     });
   });
 
-  it('should render the header layout', () => {
-    expect(wrapper.find('header-view-stub').exists()).toBe(true);
-  });
-
   it('should render the router-view', () => {
     expect(wrapper.find('router-view-stub').exists()).toBe(true);
+  });
+
+  it('should render the header layout', () => {
+    expect(wrapper.find('header-view-stub').exists()).toBe(true);
   });
 });

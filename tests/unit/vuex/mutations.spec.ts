@@ -10,17 +10,17 @@ describe('mutations', () => {
   });
 
   describe('addTodoItem', () => {
-    it('should not add a new todo item if no text is provided', () => {
+    it('should not addItem a new todo item if no text is provided', () => {
       mutations['addTodoItem'](state, '');
       expect(state.todos).toEqual([]);
     });
 
-    it('should add a new todo item with the given text', () => {
+    it('should addItem a new todo item with the given text', () => {
       mutations['addTodoItem'](state, 'Test Todo');
       expect(state.todos).toEqual([{ text: 'Test Todo', done: false, id: 1 }]);
     });
 
-    it('should add a new todo item with an incremented id', () => {
+    it('should addItem a new todo item with an incremented id', () => {
       state.todos = [{ text: 'Test Todo 1', done: false, id: 1 }];
       mutations['addTodoItem'](state, 'Test Todo 2');
       expect(state.todos).toEqual([
@@ -45,7 +45,7 @@ describe('mutations', () => {
   });
 
   describe('editTodoItem', () => {
-    it('should edit a todo item', () => {
+    it('should editItem a todo item', () => {
       state.todos = [{ text: 'Test Todo', done: false, id: 1 }];
       mutations['editTodoItem'](state, {
         id: 1,
@@ -56,7 +56,7 @@ describe('mutations', () => {
       expect(state.editingItem).toBe(null);
     });
 
-    it('should not edit if todo was not found', () => {
+    it('should not editItem if todo was not found', () => {
       state.todos = [{ text: 'Test Todo', done: false, id: 1 }];
       mutations['editTodoItem'](state, {
         id: 4,

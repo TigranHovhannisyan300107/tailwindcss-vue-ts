@@ -8,7 +8,7 @@ describe('ProfileView', () => {
     wrapper = shallowMount(ProfileView);
   });
 
-  it('should render h1 with text "This is the profile page"', () => {
-    expect(wrapper.find('h1').text()).toBe('This is the profile page');
+  it('should render h2 with text "This is the profile page"', () => {
+    expect(wrapper.find('h2').text()).toBe('This is the profile page');
   });
 });

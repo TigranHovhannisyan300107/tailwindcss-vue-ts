@@ -14,7 +14,5 @@ import { IVuexTodosModel, ITodoItem } from '@/types';
 import TodoItem from '@/components/todos/TodoItem.vue';
 
 const store: Store<IVuexTodosModel> = useStore();
-const todoList: ComputedRef<Array<ITodoItem>> = computed(
-  () => store.getters.todos
-);
+const todoList: ComputedRef<ITodoItem[]> = computed(() => store.getters.todos);
 </script>

@@ -1,7 +1,7 @@
 <template>
   <header-view />
   <div
-    class="flex flex-col justify-center m-auto max-w-[1294px] py-[94px] px-3 xl:px-[0px] [21px]"
+    class="flex flex-col justify-center px-3 xl:px-[0px] m-auto max-w-[1294px] py-[94px] [21px]"
   >
     <router-view />
   </div>

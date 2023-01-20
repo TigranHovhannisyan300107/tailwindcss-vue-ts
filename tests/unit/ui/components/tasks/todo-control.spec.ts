@@ -3,16 +3,16 @@ import { shallowMount, VueWrapper } from '@vue/test-utils';
 
 import { IVuexTodosModel } from '@/types';
 import { mockedTodoStore, todoItemMock } from '@t/mocks';
-import TodoControl from '@/components/todos/TodoInput.vue';
+import TodoInput from '@/components/todos/TodoInput.vue';
 
-describe('TodoControl', () => {
-  let wrapper: VueWrapper<InstanceType<typeof TodoControl>>;
+describe('TodoInput', () => {
+  let wrapper: VueWrapper<InstanceType<typeof TodoInput>>;
   let store: Store<IVuexTodosModel>;
 
   beforeEach(() => {
     store = createStore(mockedTodoStore);
     store.dispatch = jest.fn();
-    wrapper = shallowMount(TodoControl, {
+    wrapper = shallowMount(TodoInput, {
       global: {
         plugins: [store],
       },
@@ -20,41 +20,41 @@ describe('TodoControl', () => {
   });
 
   it('should render input element', () => {
-    expect(wrapper.find('input').exists()).toBe(true);
+    expect(wrapper.find('input[type=text]').exists()).toBe(true);
   });
 
-  it('should render button element', () => {
-    expect(wrapper.find('button').exists()).toBe(true);
+  it('should render input element with type button', () => {
+    expect(wrapper.find('input[type=button]').exists()).toBe(true);
   });
 
-  it('should render button element with "Add"', () => {
-    expect(wrapper.find('button').text()).toBe('Add');
+  it('should render input element with value "Add"', () => {
+    expect(wrapper.find('input[type=button]').attributes('value')).toBe('Add');
   });
 
-  it('should call add when clicking on Add button', async () => {
-    await wrapper.find('button').trigger('click');
+  it('should call addItem when clicking on Add button', async () => {
+    await wrapper.find('input[type=button]').trigger('click');
     expect(store.dispatch).toHaveBeenCalledWith('addTodoItem', '');
   });
 
-  it('should render button element with "Save"', () => {
+  it('should render input element with value "Save"', () => {
     store.state.editingItem = todoItemMock;
-    wrapper = shallowMount(TodoControl, {
+    wrapper = shallowMount(TodoInput, {
       global: {
         plugins: [store],
       },
     });
-    expect(wrapper.find('button').text()).toBe('Save');
+    expect(wrapper.find('input[type=button]').attributes('value')).toBe('Save');
   });
 
-  it('should call edit when clicking on Save button', async () => {
+  it('should call editItem when clicking on Save button', async () => {
     store.state.editingItem = todoItemMock;
-    wrapper = shallowMount(TodoControl, {
+    wrapper = shallowMount(TodoInput, {
       global: {
         plugins: [store],
       },
     });
-    expect(wrapper.vm.$refs.inputRef.value).toBe(todoItemMock.text);
-    await wrapper.find('button').trigger('click');
+    expect(wrapper.vm.$refs.textRef.value).toBe(todoItemMock.text);
+    await wrapper.find('input[type=button]').trigger('click');
     expect(store.dispatch).toHaveBeenCalledWith('editTodoItem', todoItemMock);
   });
 });

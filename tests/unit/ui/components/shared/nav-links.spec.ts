@@ -1,5 +1,5 @@
 import { RouterLinkStub, shallowMount, VueWrapper } from '@vue/test-utils';
-import NavLinks from '@/components/shared/NavLinks.vue';
+import NavLinks from '@/components/shared/NavigationBar.vue';
 
 describe('NavLinks', () => {
   let wrapper: VueWrapper<InstanceType<typeof NavLinks>>;

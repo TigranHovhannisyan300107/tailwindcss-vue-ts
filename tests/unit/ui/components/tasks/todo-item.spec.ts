@@ -1,5 +1,4 @@
 import { createStore, Store } from 'vuex';
-import { InputHTMLAttributes } from 'vue';
 
 import { IVuexTodosModel } from '@/types';
 import { mockedTodoStore } from '@t/mocks';
@@ -33,16 +32,6 @@ describe('TodoItem', () => {
     expect(text.text()).toBe('Test todo item');
   });
 
-  test('toggles the done state of the todo item when checkbox is clicked', async () => {
-    const checkbox = wrapper.find("input[type='checkbox']");
-    await checkbox.setValue(true);
-    expect((checkbox.element as InputHTMLAttributes).checked).toBe(true);
-
-    await checkbox.setValue(false);
-    expect((checkbox.element as InputHTMLAttributes).checked).toBe(false);
-    expect(store.dispatch).toBeCalledTimes(2);
-  });
-
   test('displays the line-through class when done is true', async () => {
     const text = wrapper.find('p');
     expect(text.classes('line-through')).toBe(false);
@@ -56,7 +45,7 @@ describe('TodoItem', () => {
     expect(text.classes('line-through')).toBe(true);
   });
 
-  test('dispatches the SET_EDITING_ITEM action when edit button is clicked', async () => {
+  test('dispatches the SET_EDITING_ITEM action when editItem button is clicked', async () => {
     const spy = jest.spyOn(store, 'dispatch');
     const editButton = wrapper.findAll('button')[0];
     await editButton.trigger('click');

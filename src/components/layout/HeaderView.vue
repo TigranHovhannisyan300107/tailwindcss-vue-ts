@@ -1,15 +1,13 @@
 <template>
   <header class="flex justify-center w-full h-[65px] bg-dark-blue">
-    <div
-      class="flex justify-between w-[1440px] items-center px-[20px] xl:px-[80px]"
-    >
+    <div class="flex justify-between items-center w-[1440px] px-5 xl:px-20">
       <main-logo />
-      <nav-links />
+      <navigation-bar />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
 import MainLogo from '@/components/shared/MainLogo.vue';
-import NavLinks from '@/components/shared/NavLinks.vue';
+import NavigationBar from '@/components/shared/NavigationBar.vue';
 </script>

@@ -5,10 +5,6 @@ export interface IVuexTodosModel {
   editingItem: ITodoItem | null;
 }
 
-export interface IVuexRootStore {
-  todos: IVuexTodosModel;
-}
-
 export interface ITodoItem {
   id: number;
   text: string;
